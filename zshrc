@@ -1,3 +1,7 @@
+parse_git_branch_no_brackets() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
+}
+
 git_push_set_upstream(){
   git push --set-upstream origin `parse_git_branch_no_brackets`
 }
